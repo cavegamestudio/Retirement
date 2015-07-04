@@ -1,0 +1,341 @@
+fileFormatVersion: 2
+guid: 077ff522b43e8054da84c3216e4ff187
+timeCreated: 1436003838
+licenseType: Free
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: font_spider_A
+    21300002: font_spider_B
+    21300004: font_spider_C
+    21300006: font_spider_D
+    21300008: font_spider_E
+    21300010: font_spider_F
+    21300012: font_spider_G
+    21300014: font_spider_H
+    21300016: font_spider_I
+    21300018: font_spider_J
+    21300020: font_spider_K
+    21300022: font_spider_L
+    21300024: font_spider_M
+    21300026: font_spider_N
+    21300028: font_spider_O
+    21300030: font_spider_P
+    21300032: font_spider_Q
+    21300034: font_spider_R
+    21300036: font_spider_S
+    21300038: font_spider_T
+    21300040: font_spider_U
+    21300042: font_spider_V
+    21300044: font_spider_W
+    21300046: font_spider_X
+    21300048: font_spider_Y
+    21300050: font_spider_Z
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 1
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: .25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  cubemapConvolution: 0
+  cubemapConvolutionSteps: 8
+  cubemapConvolutionExponent: 1.5
+  seamlessCubemap: 0
+  textureFormat: -3
+  maxTextureSize: 2048
+  textureSettings:
+    filterMode: -1
+    aniso: 16
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  rGBM: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: .5, y: .5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 100
+  alphaIsTransparency: 1
+  textureType: 8
+  buildTargetSettings: []
+  spriteSheet:
+    sprites:
+    - name: font_spider_A
+      rect:
+        serializedVersion: 2
+        x: 5
+        y: 1030
+        width: 375
+        height: 400
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: font_spider_B
+      rect:
+        serializedVersion: 2
+        x: 408
+        y: 1030
+        width: 329
+        height: 400
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: font_spider_C
+      rect:
+        serializedVersion: 2
+        x: 762
+        y: 1023
+        width: 361
+        height: 414
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: font_spider_D
+      rect:
+        serializedVersion: 2
+        x: 1156
+        y: 1026
+        width: 345
+        height: 408
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: font_spider_E
+      rect:
+        serializedVersion: 2
+        x: 1536
+        y: 1031
+        width: 307
+        height: 400
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: font_spider_F
+      rect:
+        serializedVersion: 2
+        x: 1876
+        y: 1030
+        width: 296
+        height: 402
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: font_spider_G
+      rect:
+        serializedVersion: 2
+        x: 2177
+        y: 1023
+        width: 381
+        height: 415
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: font_spider_H
+      rect:
+        serializedVersion: 2
+        x: 2596
+        y: 1024
+        width: 340
+        height: 413
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: font_spider_I
+      rect:
+        serializedVersion: 2
+        x: 2968
+        y: 1024
+        width: 114
+        height: 415
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: font_spider_J
+      rect:
+        serializedVersion: 2
+        x: 3094
+        y: 1021
+        width: 272
+        height: 415
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: font_spider_K
+      rect:
+        serializedVersion: 2
+        x: 3407
+        y: 1032
+        width: 359
+        height: 401
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: font_spider_L
+      rect:
+        serializedVersion: 2
+        x: 26
+        y: 509
+        width: 298
+        height: 406
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: font_spider_M
+      rect:
+        serializedVersion: 2
+        x: 345
+        y: 510
+        width: 394
+        height: 409
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: font_spider_N
+      rect:
+        serializedVersion: 2
+        x: 778
+        y: 510
+        width: 338
+        height: 408
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: font_spider_O
+      rect:
+        serializedVersion: 2
+        x: 1144
+        y: 500
+        width: 387
+        height: 428
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: font_spider_P
+      rect:
+        serializedVersion: 2
+        x: 1562
+        y: 511
+        width: 311
+        height: 406
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: font_spider_Q
+      rect:
+        serializedVersion: 2
+        x: 1910
+        y: 485
+        width: 383
+        height: 430
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: font_spider_R
+      rect:
+        serializedVersion: 2
+        x: 2368
+        y: 507
+        width: 339
+        height: 410
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: font_spider_S
+      rect:
+        serializedVersion: 2
+        x: 2729
+        y: 493
+        width: 330
+        height: 436
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: font_spider_T
+      rect:
+        serializedVersion: 2
+        x: 3066
+        y: 511
+        width: 326
+        height: 413
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: font_spider_U
+      rect:
+        serializedVersion: 2
+        x: 3402
+        y: 499
+        width: 348
+        height: 421
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: font_spider_V
+      rect:
+        serializedVersion: 2
+        x: 33
+        y: 3
+        width: 349
+        height: 409
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: font_spider_W
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 4
+        width: 492
+        height: 408
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: font_spider_X
+      rect:
+        serializedVersion: 2
+        x: 890
+        y: 7
+        width: 347
+        height: 405
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: font_spider_Y
+      rect:
+        serializedVersion: 2
+        x: 1224
+        y: 0
+        width: 347
+        height: 415
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: font_spider_Z
+      rect:
+        serializedVersion: 2
+        x: 1572
+        y: 3
+        width: 317
+        height: 413
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
