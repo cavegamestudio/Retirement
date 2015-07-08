@@ -3,8 +3,11 @@ using UnityEngine.UI;
 using System.Collections;
 using System.Threading.Tasks;
 using Parse;
+using System.Collections.Generic;
+
 public class script_menu_manager : MonoBehaviour {
-	
+
+	//BUTTONS
 	public GameObject btn_main_new;
 	public GameObject btn_main_continue;
 	public GameObject btn_main_load;
@@ -14,199 +17,203 @@ public class script_menu_manager : MonoBehaviour {
 	public GameObject btn_main_achievement;
 	public GameObject btn_main_report;
 	public GameObject btn_main_news;
-	public GameObject btn_main_developer;
-	
+
+	//ID FOR EACH PANEL DISPLAYS, for identification purpose
+	public const string CONST_ID_NEWGAME = "newgame";
+	public const string CONST_ID_CONTINUE = "continue";
+	public const string CONST_ID_LOAD = "load";
+	public const string CONST_ID_OPTIONS = "options";
+	public const string CONST_ID_NEWS = "news";
+	public const string CONST_ID_ACHIEVEMENT = "achievements";
+	public const string CONST_ID_REPORT = "report";
+
+	//PANEL DISPLAY GROUPS
 	public GameObject grp_news;
-	public GameObject grp_dev;
 	public GameObject grp_report;
 	public GameObject grp_achievement;
 	public GameObject grp_newgame;
 	public GameObject grp_continue;
 	public GameObject grp_load;
 	public GameObject grp_options;
+	Dictionary<string, GameObject> GROUP = new Dictionary<string, GameObject>();
 
-	public Text txt_main_announcement_component;
+	//Panel Title
 	public Text txt_main_title;
-	public string announcement;
-	public bool announcement_loading;
-	public bool announcement_updated;
 
-	public string displayContent;
-	public string prevDisplayContent;
+	//News Status Toggles
+	public bool news_loading;
+	public bool news_updated;
+	public bool news_forceupdate;
+
+	//News Template Reference
+	public GameObject template_item_group;
+	public GameObject template_item_title;
+	public GameObject template_item_post_detail;
+	public GameObject template_item_post_content;
+
+	// News Text Reference
+	public IEnumerable<ParseObject> news_from_parse;
+
+	// to be deleted
+	public Text txt_main_news;
+	public string news;
+
+	public string display_currentGroup;
+	public string display_prevGroup;
 
 	void Start () {
-		btn_main_new = GameObject.Find ("btn_new_game");
-		btn_main_continue = GameObject.Find ("btn_continue");
-		btn_main_load = GameObject.Find ("btn_load_game");
-		btn_main_options = GameObject.Find ("btn_options");
-		btn_main_quit = GameObject.Find ("btn_quit");
-		btn_main_news = GameObject.Find ("btn_news");
-		btn_main_refresh = GameObject.Find ("btn_refresh");
-		btn_main_refresh = GameObject.Find ("btn_achievement");
-		btn_main_refresh = GameObject.Find ("btn_report");
-		btn_main_developer = GameObject.Find ("btn_dev");
+		GROUP[CONST_ID_NEWS] = grp_news;
+		GROUP[CONST_ID_REPORT] = grp_report;
+		GROUP[CONST_ID_ACHIEVEMENT] = grp_achievement;
+		GROUP[CONST_ID_NEWGAME] = grp_newgame;
+		GROUP[CONST_ID_CONTINUE] = grp_continue;
+		GROUP[CONST_ID_LOAD] = grp_load;
+		GROUP[CONST_ID_OPTIONS] = grp_options;
 
-		grp_news = GameObject.Find ("grp_news");
-		grp_dev = GameObject.Find ("grp_dev");
-		grp_report = GameObject.Find ("grp_report");
-		grp_achievement = GameObject.Find ("grp_achievement");
-		grp_newgame = GameObject.Find ("grp_newgame");
-		grp_continue = GameObject.Find ("grp_continue");
-		grp_load = GameObject.Find ("grp_load");
-		grp_options = GameObject.Find ("grp_options");
+		news_loading = true;
+		news_updated = false;
+		news_forceupdate = false;
 
-		txt_main_announcement_component = GameObject.Find ("txt_content").GetComponent<Text>();
+		news_from_parse = null;
 
-		txt_main_title = GameObject.Find ("txt_title").GetComponent<Text>();
-
-		announcement = "";
-		announcement_loading = true;
-		announcement_updated = false;
-
-		displayContent = "news";
-		prevDisplayContent = displayContent;
-
-		refreshPanelContent();
-
-
+		//Display News on start up
+		display_currentGroup = CONST_ID_NEWS;
+		display_prevGroup = display_currentGroup;
+		updateNews();
 	}
 
 	void Update () {
-		clearContent();
-		switch(displayContent){
-		default:
+		switch (display_currentGroup) {
+
+			default:
 			break;
-		case "news":
-			if(announcement_updated == false){
-				if(announcement_loading == true){
-					txt_main_announcement_component.text = "Loading...";
-				} else {
-					txt_main_announcement_component.text = announcement;
-					announcement_updated = true;
+			case CONST_ID_REPORT:
+			break;
+			case CONST_ID_ACHIEVEMENT:
+			break;
+			case CONST_ID_NEWGAME:
+			break;
+			case CONST_ID_CONTINUE:
+			break;
+			case CONST_ID_LOAD:
+			break;
+			case CONST_ID_OPTIONS:
+			break;
+			case CONST_ID_NEWS:
+			if(!btn_main_refresh.GetComponent<Button> ().enabled) {
+				btn_main_refresh.GetComponent<Button> ().enabled = true;
+			}
+
+
+			if (news_updated == false) {
+				if (news_loading == true) {
+					txt_main_news.text = "Loading...";
+				}				else {
+					//TODO 
+					txt_main_news.text = news;
+					news_updated = true;
 				}
 			}
-			break;
-		case "developer":
-			GameObject pan_main_content = GameObject.Find ("pan_main");
+
 
 			break;
 		}
 	}
 
-
-	public void onClick_main_new(){
+	public void onClick_main_new() {
 		Debug.Log("Button Pressed : Main - New Game");
 		txt_main_title.text = "New Game";
-		displayContent = "newgame";
-		refreshPanelContent();
+		display_currentGroup = CONST_ID_NEWGAME;
+		toggleGroups();
 	}
 
-	public void onClick_main_continue(){
+	public void onClick_main_continue() {
 		Debug.Log("Button Pressed : Main - Continue");
 		txt_main_title.text = "Continue";
-		displayContent = "continuegame";
-		refreshPanelContent();
+		display_currentGroup = CONST_ID_CONTINUE;
+		toggleGroups();
 	}
 
-	public void onClick_main_load(){
+	public void onClick_main_load() {
 		Debug.Log("Button Pressed : Main - Load");
 		txt_main_title.text = "Load Game";
-		displayContent = "loadgame";
-		refreshPanelContent();
+		display_currentGroup = CONST_ID_LOAD;
+		toggleGroups();
 	}
 
-	public void onClick_main_options(){
+	public void onClick_main_options() {
 		Debug.Log("Button Pressed : Main - Options");
 		txt_main_title.text = "Options";
-		displayContent = "options";
-		refreshPanelContent();
+		display_currentGroup = CONST_ID_OPTIONS;
+		toggleGroups();
 	}
 
-	public void onClick_main_quit(){
+	public void onClick_main_news() {
+		Debug.Log("Button Pressed : Main - News");
+		txt_main_title.text = "News";
+		display_currentGroup = CONST_ID_NEWS;
+		toggleGroups();
+		updateNews();
+	}
+
+	public void onClick_main_achievement() {
+		Debug.Log("Button Pressed : Main - Achievement");
+		txt_main_title.text = "Achievements";
+		display_currentGroup = CONST_ID_ACHIEVEMENT;
+		toggleGroups();
+	}
+
+	public void onClick_main_report() {
+		Debug.Log("Button Pressed : Main - Report");
+		txt_main_title.text = "Report Bugs/Issues";
+		display_currentGroup = CONST_ID_REPORT;
+		toggleGroups();
+	}
+
+	public void onClick_main_refresh() {
+		Debug.Log("Button Pressed : Main - Refresh");
+		btn_main_refresh.GetComponent<Button>().enabled = false;
+		news_forceupdate = true;
+		updateNews();
+		news_forceupdate = false;
+		btn_main_refresh.GetComponent<Button>().enabled = true;
+	}
+
+	public void onClick_main_quit() {
 		Debug.Log("Button Pressed : Main - Quit");
 		Application.Quit();
 	}
 
-	public void onClick_main_news(){
-		Debug.Log("Button Pressed : Main - News");
-		txt_main_title.text = "News";
-		displayContent = "news";
-		refreshPanelContent();
+	void toggleGroups() {
+		GROUP[display_prevGroup].SetActive(false);
+		GROUP[display_currentGroup].SetActive(true);
+		display_prevGroup = display_currentGroup;
 	}
 
-	public void onClick_main_refresh(){
-		Debug.Log("Button Pressed : Main - Refresh");
-		refreshPanelContent();
+	void updateNews() {
+		if (!news.Equals ("") && !news_forceupdate){
+			return;
+		}
+			
+		Debug.Log("Downloading news data from parse...");
+		news_loading = true;
+		news_updated = false;
+		
+		var query = ParseObject.GetQuery("News")
+			.OrderByDescending("updatedAt")
+				.Limit (10);
+		query.FindAsync().ContinueWith(t => {
+			IEnumerable<ParseObject> articles = t.Result;
+			news = "";
+			foreach (var article in articles){
+				news += article.Get<string>("title") + "\n<hr>";
+				news += article.Get<string>("content") + "\n<hr>";
+			}
+			Debug.Log("News updated");
+			news_loading = false;
+		});
+		news_forceupdate = false;
+		
 	}
-
-	public void onClick_main_achivement(){
-		Debug.Log("Button Pressed : Main - Achievement");
-		txt_main_title.text = "Achievements";
-		displayContent = "achievement";
-		refreshPanelContent();
-	}
-
-	public void onClick_main_report(){
-		Debug.Log("Button Pressed : Main - Report");
-		txt_main_title.text = "Report Bugs/Issues";
-		displayContent = "report";
-		refreshPanelContent();
-	}
-
-	public void onClick_main_dev(){
-		Debug.Log("Button Pressed: Main - Dev");
-		txt_main_title.text = "Developer Tools";
-		displayContent = "developer";
-		refreshPanelContent();
-	}
-
 	
-	void clearContent(){
-		if (displayContent.Equals (prevDisplayContent)){
-			//do nothing
-		} else {
-			txt_main_announcement_component.text = "";
-			displayContent = prevDisplayContent;
-		}
-	}
-
-	void toggleGroupEnabled(){
-		grp_news = GameObject.Find ("grp_news");
-		grp_dev = GameObject.Find ("grp_dev");
-		grp_report = GameObject.Find ("grp_report");
-		grp_achievement = GameObject.Find ("grp_achievement");
-		grp_newgame = GameObject.Find ("grp_newgame");
-		grp_continue = GameObject.Find ("grp_continue");
-		grp_load = GameObject.Find ("grp_load");
-		grp_options = GameObject.Find ("grp_options");
-	}
-
-	void refreshPanelContent(){
-		announcement_loading = true;
-		announcement_updated = false;
-
-		ParseObject result;
-
-
-		switch(displayContent){
-		default:
-			break;
-		case "news":
-			Debug.Log("Downloading news data from parse...");
-
-			ParseQuery<ParseObject> query = ParseObject.GetQuery("News");
-			query.GetAsync("tCWofrnBWD").ContinueWith(t =>
-			                                          {
-				result = t.Result;
-				announcement = result.Get<string>("content");
-				Debug.Log("News updated");
-				announcement_loading = false;
-			});
-			break;
-		}
-
-	}
-
-
-
 }
