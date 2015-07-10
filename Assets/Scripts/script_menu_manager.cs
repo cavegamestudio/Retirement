@@ -75,6 +75,13 @@ public class script_menu_manager : MonoBehaviour {
 
 		news_from_parse = null;
 
+		for(int i = 0; i < 10; i ++){
+			grps[i] = GameObject.Find ("news_post_" + (i+1));
+			titles[i] = GameObject.Find ("news_post_title_" + (i+1)).GetComponent<Text>();
+			details[i] = GameObject.Find ("news_post_detail_" + (i+1)).GetComponent<Text>();
+			contents[i] = GameObject.Find ("news_post_content_" +(i+1)).GetComponent<Text>();
+		}
+
 		//Display News on start up
 		display_currentGroup = CONST_ID_NEWS;
 		display_prevGroup = display_currentGroup;
@@ -87,17 +94,35 @@ public class script_menu_manager : MonoBehaviour {
 
 			default:
 				break;
-			case CONST_ID_REPORT:
+		case CONST_ID_REPORT:
+			if(btn_main_refresh.GetComponent<Button> ().enabled) {
+				btn_main_refresh.GetComponent<Button> ().enabled = false;
+			}
 				break;
-			case CONST_ID_ACHIEVEMENT:
+		case CONST_ID_ACHIEVEMENT:
+			if(btn_main_refresh.GetComponent<Button> ().enabled) {
+				btn_main_refresh.GetComponent<Button> ().enabled = false;
+			}
 				break;
-			case CONST_ID_NEWGAME:
+		case CONST_ID_NEWGAME:
+			if(btn_main_refresh.GetComponent<Button> ().enabled) {
+				btn_main_refresh.GetComponent<Button> ().enabled = false;
+			}
 				break;
-			case CONST_ID_CONTINUE:
+		case CONST_ID_CONTINUE:
+			if(btn_main_refresh.GetComponent<Button> ().enabled) {
+				btn_main_refresh.GetComponent<Button> ().enabled = false;
+			}
 				break;
-			case CONST_ID_LOAD:
+		case CONST_ID_LOAD:
+			if(btn_main_refresh.GetComponent<Button> ().enabled) {
+				btn_main_refresh.GetComponent<Button> ().enabled = false;
+			}
 				break;
-			case CONST_ID_OPTIONS:
+		case CONST_ID_OPTIONS:
+			if(btn_main_refresh.GetComponent<Button> ().enabled) {
+				btn_main_refresh.GetComponent<Button> ().enabled = false;
+			}
 				break;
 			case CONST_ID_NEWS:
 
@@ -243,6 +268,7 @@ public class script_menu_manager : MonoBehaviour {
 			Debug.Log("News is already loaded, no force update\n");
 			return;
 		}
+
 
 		for(int i = 0; i < 10; i ++){
 			grps[i].SetActive (false);
